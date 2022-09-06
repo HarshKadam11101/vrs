@@ -83,11 +83,7 @@ public class VehicleServiceImpl implements VehicleService{
 		return null;
 	}
 
-	@Override
-	public List<Integer> numberOfVehicle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 		
 		
 		

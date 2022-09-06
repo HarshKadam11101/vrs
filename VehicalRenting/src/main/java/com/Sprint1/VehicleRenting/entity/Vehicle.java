@@ -39,7 +39,7 @@ import javax.persistence.Table;
 		@Column(name="rent_per_day")
 		private int rent;
 
-		
+		public Vehicle() {}
 		
 		public Vehicle() {
 			super();

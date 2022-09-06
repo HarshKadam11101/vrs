@@ -11,7 +11,8 @@ public interface VehicleService {
 	Vehicle updateVehicle(Vehicle vehicle);
 	void deleteVehicle(int vehilcleId);
 	List<Vehicle> viewVehicle(String vehicleName);
-	List<Integer> numberOfVehicle();
+	//List<Integer> numberOfVehicle();
+	//List<Integer> numberOfVehicle(int vehicleId);
 
 }
 
