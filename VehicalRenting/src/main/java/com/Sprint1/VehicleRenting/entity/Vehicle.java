@@ -41,9 +41,7 @@ import javax.persistence.Table;
 
 		public Vehicle() {}
 		
-		public Vehicle() {
-			super();
-		}
+		
 
 		public Vehicle(int vehicleId, String vehicleName, Brand brandName, Location area, String vehicleNumber,
 				int rent) {
