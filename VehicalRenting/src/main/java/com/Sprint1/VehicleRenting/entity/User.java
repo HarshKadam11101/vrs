@@ -20,6 +20,9 @@ public class User implements Serializable{
 	@Column(name="user_id")
 	private int userId;
 	
+	@Column(name="PAN")
+	private String PAN;
+	
 	@Column(name="username")
 	private String username;
 	
@@ -39,9 +42,10 @@ public class User implements Serializable{
 		
 	}
 
-	public User(String username, String password, String address, int mobileNumber, String email) {
+	public User(String username, String PAN, String password, String address, int mobileNumber, String email) {
 		super();
 		this.username = username;
+		this.PAN = PAN;
 		this.password = password;
 		this.address = address;
 		this.mobileNumber = mobileNumber;
@@ -59,6 +63,14 @@ public class User implements Serializable{
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getPAN() {
+		return PAN;
+	}
+
+	public void setPAN(String pAN) {
+		PAN = pAN;
 	}
 
 	public String getPassword() {
@@ -100,9 +112,11 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "AbstractUser [username=" + username + ", password=" + password + ", address=" + address
-				+ ", mobileNumber=" + mobileNumber + ",email=" + email + "]";
+		return "User [userId=" + userId + ", PAN=" + PAN + ", username=" + username + ", password=" + password
+				+ ", address=" + address + ", mobileNumber=" + mobileNumber + ", email=" + email + "]";
 	}
+
+	
 	
 }
 

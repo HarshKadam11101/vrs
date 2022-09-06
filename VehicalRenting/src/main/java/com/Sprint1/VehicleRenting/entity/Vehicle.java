@@ -39,6 +39,19 @@ import javax.persistence.Table;
 		@Column(name="rent_per_day")
 		private int rent;
 
+		
+		
+		public Vehicle(int vehicleId, String vehicleName, Brand brandName, Location area, String vehicleNumber,
+				int rent) {
+			super();
+			this.vehicleId = vehicleId;
+			this.vehicleName = vehicleName;
+			this.brandName = brandName;
+			this.area = area;
+			this.vehicleNumber = vehicleNumber;
+			this.rent = rent;
+		}
+
 		public int getVehicleId() {
 			return vehicleId;
 		}
