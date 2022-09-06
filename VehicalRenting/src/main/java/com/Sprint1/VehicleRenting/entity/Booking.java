@@ -10,11 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Transactional
 @NoArgsConstructor
 @Entity
 @Table(name="booking")
@@ -36,6 +38,8 @@ public class Booking {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Vehicle vehicle;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Location location;
 	
 
 }
