@@ -1,13 +1,21 @@
 package com.Sprint1.VehicleRenting.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "users")
@@ -17,8 +25,8 @@ public class User implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_id")
-	private int userId;
+	@Column(name="id")
+	private int id;
 	
 	@Column(name="PAN")
 	private String PAN;
@@ -33,28 +41,44 @@ public class User implements Serializable{
 	private String address;
 	
 	@Column(name="mobile_number")
-	private int mobileNumber;
+	private long mobileNumber;
 	
 	@Column(name="email")
 	private String email;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="roleId",referencedColumnName="id")
+	Role role;
+	
+
 	
 	public User() {
 		
 	}
 
-	public User(String username, String PAN, String password, String address, int mobileNumber, String email) {
-		super();
+	public User(String username, String PAN, String password, String address, long mobileNumber, String email, Role role) {
+	
 		this.username = username;
 		this.PAN = PAN;
 		this.password = password;
 		this.address = address;
 		this.mobileNumber = mobileNumber;
 		this.email = email;
-		
+		this.role = role;
 	}
 	
+	
+	
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	public int getUserId() {
-		return userId;
+		return id;
 	}
 
 	public String getUsername() {
@@ -79,7 +103,7 @@ public class User implements Serializable{
 	
 	public void setUserId(int id)
 	{
-		this.userId=id;
+		this.id=id;
 	}
 
 	public void setPassword(String password) {
@@ -94,11 +118,11 @@ public class User implements Serializable{
 		this.address = address;
 	}
 
-	public int getMobileNumber() {
+	public long getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
@@ -112,9 +136,12 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", PAN=" + PAN + ", username=" + username + ", password=" + password
-				+ ", address=" + address + ", mobileNumber=" + mobileNumber + ", email=" + email + "]";
+		return "User [id=" + id + ", PAN=" + PAN + ", username=" + username + ", password=" + password
+				+ ", address=" + address + ", mobileNumber=" + mobileNumber + ", email=" + email + ", role=" + role
+				+ "]";
 	}
+
+	
 
 	
 	
