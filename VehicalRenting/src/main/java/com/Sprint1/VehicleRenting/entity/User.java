@@ -1,23 +1,18 @@
 package com.Sprint1.VehicleRenting.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
+
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
+@DynamicUpdate
 @Table(name = "users")
 public class User implements Serializable{
 	
@@ -46,9 +41,8 @@ public class User implements Serializable{
 	@Column(name="email")
 	private String email;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="roleId",referencedColumnName="id")
-	Role role;
+	@Column(name="Roles")
+	private String role;
 	
 
 	
@@ -56,7 +50,7 @@ public class User implements Serializable{
 		
 	}
 
-	public User(String username, String PAN, String password, String address, long mobileNumber, String email, Role role) {
+	public User(String username, String PAN, String password, String address, long mobileNumber, String email, String role) {
 	
 		this.username = username;
 		this.PAN = PAN;
@@ -69,11 +63,11 @@ public class User implements Serializable{
 	
 	
 	
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

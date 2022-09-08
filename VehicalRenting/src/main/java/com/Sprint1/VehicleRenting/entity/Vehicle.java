@@ -8,11 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 	@Entity
-	@Table(name = "vehicle")
+	@Table(name = "Vehicle")
 	public class Vehicle implements Serializable{
 		
 		private static final long serialVersionUID = 1L;
@@ -25,13 +26,11 @@ import javax.persistence.Table;
 		@Column(name="vehicle_name")
 		private String vehicleName;
 		
-		@ManyToOne(targetEntity = Brand.class)
+		@OneToOne(targetEntity = Brand.class)
 		private Brand brandName;
 		
-		
-		@ManyToOne(targetEntity = Location.class)
+		@OneToOne(targetEntity = Location.class)
 		private Location area;
-		
 		
 		@Column(name="vehicle_number")
 		private String vehicleNumber;
