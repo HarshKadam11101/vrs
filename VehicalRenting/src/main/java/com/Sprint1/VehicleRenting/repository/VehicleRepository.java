@@ -11,9 +11,9 @@ import com.Sprint1.VehicleRenting.entity.Vehicle;
 @Repository
 public interface VehicleRepository extends JpaRepository< Vehicle, Integer>  {
 	
-	Optional<Vehicle> findByVehicleName(String name);
+	Vehicle findByVehicleName(String name);
 	
-	Optional<Vehicle> findByVehicleId(int vehilcleId);
+	Vehicle findByVehicleId(int vehilcleId);
 	
 
 }

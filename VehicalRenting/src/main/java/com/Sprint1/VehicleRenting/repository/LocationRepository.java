@@ -1,8 +1,11 @@
 package com.Sprint1.VehicleRenting.repository;
 
-public interface LocationRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.Sprint1.VehicleRenting.entity.Location;
+
+@Repository
+public interface LocationRepository extends JpaRepository<Location,Integer > {
 
 }
-//location service  banabo(interface hobe)
-//jekono repo copy and change
-//

@@ -1,4 +1,4 @@
-package com.Sprint1.VehicleRenting.service.impl;
+package com.Sprint1.VehicleRenting.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
