@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,43 +21,67 @@ public class Booking {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long Booking_id;
 	
-	@Column (name="Pickup date")
-	private LocalDateTime PickupDate;
+	@Column (name="Pickup_time")
+	private LocalDateTime PickupTime;
 	
-	@Column(name="Return Date")
-	private LocalDateTime ReturnDate;
+	@Column(name="Return_time")
+	private LocalDateTime ReturnTime;
 	
 	@Column(name="Availability")
 	private boolean Availablity;
 	
-	@OneToOne(targetEntity = Vehicle.class,mappedBy = "Booking")
-	private Vehicle vehicle;
+	@OneToOne(targetEntity = Vehicle.class)
+	private Vehicle vehicleName;
 	
 	@OneToOne(targetEntity = Location.class)
-	private Location location;
+	private Location area;
+
+	@Column (name= "total_fare")
+	private float fare;
+	
+	@OneToOne (targetEntity= User.class)
+	private User id;
+	
+
+	public Booking(long booking_id, LocalDateTime pickupTime, LocalDateTime returnTime, boolean availablity, Vehicle vehicleName,
+			Location area, float fare, User id) {
+	
+		this.Booking_id = booking_id;
+		this.PickupTime = pickupTime;
+		this.ReturnTime = returnTime;
+		this.Availablity = availablity;
+		this.vehicleName = vehicleName;
+		this.area = area;
+		this.fare= fare;
+		this.id = id;
+		
+	}
+
+	public Booking() {
+	}
 
 	public long getBooking_id() {
 		return Booking_id;
 	}
 
-	public void setBooking_id(int booking_id) {
+	public void setBooking_id(long booking_id) {
 		Booking_id = booking_id;
 	}
 
-	public LocalDateTime getPickupDate() {
-		return PickupDate;
+	public LocalDateTime getPickupTime() {
+		return PickupTime;
 	}
 
-	public void setPickupDate(LocalDateTime pickupDate) {
-		PickupDate = pickupDate;
+	public void setPickupTime(LocalDateTime pickupTime) {
+		PickupTime = pickupTime;
 	}
 
-	public LocalDateTime getReturnDate() {
-		return ReturnDate;
+	public LocalDateTime getReturnTime() {
+		return ReturnTime;
 	}
 
-	public void setReturnDate(LocalDateTime returnDate) {
-		ReturnDate = returnDate;
+	public void setReturnTime(LocalDateTime returnTime) {
+		ReturnTime = returnTime;
 	}
 
 	public boolean isAvailablity() {
@@ -66,43 +92,48 @@ public class Booking {
 		Availablity = availablity;
 	}
 
-	public Vehicle getVehicle() {
-		return vehicle;
+	public Vehicle getVehicleName() {
+		return vehicleName;
 	}
 
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
+	public void setVehicleName(Vehicle vehicleName) {
+		this.vehicleName = vehicleName;
 	}
 
-	public Location getLocation() {
-		return location;
+	public Location getArea() {
+		return area;
 	}
 
-	public void setLocation(Location location) {
-		this.location = location;
+	public void setArea(Location area) {
+		this.area = area;
 	}
 
-	public Booking(long booking_id, LocalDateTime pickupDate, LocalDateTime returnDate, boolean availablity, Vehicle vehicle,
-			Location location) {
-	
-		this.Booking_id = booking_id;
-		this.PickupDate = pickupDate;
-		this.ReturnDate = returnDate;
-		this.Availablity = availablity;
-		this.vehicle = vehicle;
-		this.location = location;
+	public float getFare() {
+		return fare;
 	}
 
-	public Booking() {
+	public void setFare(float fare) {
+		this.fare = fare;
 	}
 
-	@Override
-	public String toString() {
-		return "Booking [Booking_id=" + Booking_id + ", PickupDate=" + PickupDate + ", ReturnDate=" + ReturnDate
-				+ ", Availablity=" + Availablity + ", vehicle=" + vehicle + ", location=" + location + "]";
+	public User getId() {
+		return id;
+	}
+
+	public void setId(User id) {
+		this.id = id;
 	}
 	
 	
+
+	
+//
+//	@Override
+//	public String toString() {
+//		return "Booking [Booking_id=" + Booking_id + ", PickupDate=" + PickupTime + ", ReturnDate=" + PickupTime
+//				+ ", Availablity=" + Availablity + ", vehicle=" + vehicle + ", location=" + location + "]";
+//	}
+//	
 
 	
 }

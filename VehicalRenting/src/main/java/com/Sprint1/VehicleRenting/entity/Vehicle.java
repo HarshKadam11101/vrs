@@ -35,8 +35,8 @@ import javax.persistence.Table;
 		@Column(name="vehicle_number")
 		private String vehicleNumber;
 		
-		@Column(name="rent_per_day")
-		private int rent;
+		@Column(name="rent_per_hour")
+		private float rent;
 
 		public Vehicle() {}
 		
@@ -93,13 +93,19 @@ import javax.persistence.Table;
 			this.vehicleNumber = vehicleNumber;
 		}
 
-		public int getRent() {
+
+
+		public float getRent() {
 			return rent;
 		}
 
-		public void setRent(int rent) {
+
+
+		public void setRent(float rent) {
 			this.rent = rent;
 		}
+
+		
 		
 		
 
