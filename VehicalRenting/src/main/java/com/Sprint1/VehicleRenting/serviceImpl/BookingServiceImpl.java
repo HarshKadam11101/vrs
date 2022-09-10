@@ -40,10 +40,10 @@ public class BookingServiceImpl implements BookingService{
 	public Booking createBooking(LocalDateTime pickupTime, LocalDateTime returnTime, Vehicle vehicle, Customer customer) {
 	
 		Booking booking = new Booking(pickupTime,returnTime,vehicle,customer);
-		booking.setPickupTime(pickupTime);
-		booking.setReturnTime(returnTime);
+		//booking.setPickupTime(pickupTime);
+		//booking.setReturnTime(returnTime);
 		float c = returnTime.toEpochSecond(ZoneOffset.of("Z"))- pickupTime.toEpochSecond(ZoneOffset.of("Z"));
-		float fare = c*vehicle.getRent();
+		float fare = (c/3600)*vehicle.getRent();
 		booking.setFare(fare);
 		return booking  ;
 		

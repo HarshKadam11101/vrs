@@ -19,7 +19,7 @@ public class Brand implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="brand_id")
-	private Integer brandId;
+	private int brandId;
 	
 	@Column(name="brand_name")
 	private String brandName;
@@ -31,7 +31,7 @@ public class Brand implements Serializable{
 	
 	
 
-	public Brand( String brandName,int launchYear) {
+	public Brand( String brandName, int launchYear) {
 		super();
 		//this.brandId = brandId;
 		this.brandName = brandName;

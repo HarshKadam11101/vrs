@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.Sprint1.VehicleRenting.entity.Brand;
 
 @Repository
+
 public interface BrandRepository extends JpaRepository<Brand, Integer>  {
 	
 

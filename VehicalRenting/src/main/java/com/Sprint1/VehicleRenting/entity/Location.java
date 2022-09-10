@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +24,7 @@ public class Location implements Serializable{
 		
 		@Column(name="city")
 		private String city;
+		
 		
 		@Column(name="area")
 		private String area;
