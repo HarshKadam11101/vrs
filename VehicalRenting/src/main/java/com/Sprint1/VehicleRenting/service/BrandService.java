@@ -8,10 +8,11 @@ import com.Sprint1.VehicleRenting.entity.Brand;
 
 public interface BrandService {
 	
-	List<Brand> getAllBrands();
-	Brand getBrand(long id);
-	Brand saveBrand(Brand brand);
-	Brand updateBrand(Brand brand);
-	void deleteBrand(long id);
+	void updateBrand(Brand brand);
+	void deleteBrand(int id);
+	int countBrand(String brandName);
+	List<Brand> viewBrand(String brandName);
+	List<Integer> numberOfBrand();
+	void insertBrand(Brand Brand);
 
 }

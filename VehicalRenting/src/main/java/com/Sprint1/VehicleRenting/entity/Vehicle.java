@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -26,11 +27,11 @@ import javax.persistence.Table;
 		@Column(name="vehicle_name")
 		private String vehicleName;
 		
-		@OneToOne(targetEntity = Brand.class)
-		private Brand brandName;
+		@ManyToOne(targetEntity = Brand.class)
+		private Brand brand;
 		
-		@OneToOne(targetEntity = Location.class)
-		private Location area;
+		@ManyToOne(targetEntity = Location.class)
+		private Location location;
 		
 		@Column(name="vehicle_number")
 		private String vehicleNumber;
@@ -42,13 +43,13 @@ import javax.persistence.Table;
 		
 		
 
-		public Vehicle(int vehicleId, String vehicleName, Brand brandName, Location area, String vehicleNumber,
+		public Vehicle( String vehicleName, Brand brand, Location location, String vehicleNumber,
 				int rent) {
 			super();
-			this.vehicleId = vehicleId;
+			//this.vehicleId = vehicleId;
 			this.vehicleName = vehicleName;
-			this.brandName = brandName;
-			this.area = area;
+			this.brand = brand;
+			this.location = location;
 			this.vehicleNumber = vehicleNumber;
 			this.rent = rent;
 		}
@@ -69,21 +70,31 @@ import javax.persistence.Table;
 			this.vehicleName = vehicleName;
 		}
 
-		public Brand getBrandName() {
-			return brandName;
+		
+
+		public Brand getBrand() {
+			return brand;
 		}
 
-		public void setBrandName(Brand brandName) {
-			this.brandName = brandName;
+
+
+		public void setBrand(Brand brand) {
+			this.brand = brand;
 		}
 
-		public Location getArea() {
-			return area;
+
+
+		public Location getLocation() {
+			return location;
 		}
 
-		public void setArea(Location area) {
-			this.area = area;
+
+
+		public void setLocation(Location location) {
+			this.location = location;
 		}
+
+
 
 		public String getVehicleNumber() {
 			return vehicleNumber;

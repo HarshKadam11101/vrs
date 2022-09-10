@@ -3,17 +3,21 @@ package com.Sprint1.VehicleRenting.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
-
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @Entity
 @DynamicUpdate
 @Table(name = "users")
+@DiscriminatorColumn(name= "user_role")
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -36,13 +40,12 @@ public class User implements Serializable{
 	private String address;
 	
 	@Column(name="mobile_number")
-	private long mobileNumber;
+	private String mobileNumber;
 	
 	@Column(name="email")
 	private String email;
 	
-	@Column(name="Roles")
-	private String role;
+	
 	
 
 	
@@ -50,7 +53,7 @@ public class User implements Serializable{
 		
 	}
 
-	public User(String username, String PAN, String password, String address, long mobileNumber, String email, String role) {
+	public User(String username, String PAN, String password, String address, String mobileNumber, String email) {
 	
 		this.username = username;
 		this.PAN = PAN;
@@ -58,29 +61,19 @@ public class User implements Serializable{
 		this.address = address;
 		this.mobileNumber = mobileNumber;
 		this.email = email;
-		this.role = role;
+		
 	}
 	
 	
 	
-	public String getRole() {
-		return role;
-	}
+	
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public int getUserId() {
+	public int getId() {
 		return id;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPAN() {
@@ -91,13 +84,16 @@ public class User implements Serializable{
 		PAN = pAN;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
-	}
-	
-	public void setUserId(int id)
-	{
-		this.id=id;
 	}
 
 	public void setPassword(String password) {
@@ -112,11 +108,11 @@ public class User implements Serializable{
 		this.address = address;
 	}
 
-	public long getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
@@ -130,9 +126,8 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", PAN=" + PAN + ", username=" + username + ", password=" + password
-				+ ", address=" + address + ", mobileNumber=" + mobileNumber + ", email=" + email + ", role=" + role
-				+ "]";
+		return  "AbstractUser [id=" + id + ", PAN=" + PAN + ", username=" + username + ", password=" + password
+				+ ", address=" + address + ", mobileNumber=" + mobileNumber + ", email=" + email + "]";
 	}
 
 	

@@ -4,9 +4,13 @@ import com.Sprint1.VehicleRenting.entity.User;
 
 public interface UserService {
 	
-  public User saveUser(User user);
+ 
+String validatePassword(String password);
 
-   public User getUser(Integer userId);
+
+User viewUser(int userId);
+
+boolean validateMobileNo(String mobileNumber);
 	
 
 

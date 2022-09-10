@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,99 +29,115 @@ public class Booking {
 	@Column(name="Availability")
 	private boolean Availablity;
 	
-	@OneToOne(targetEntity = Vehicle.class)
-	private Vehicle vehicleName;
+	@ManyToOne(targetEntity = Vehicle.class)
+	private Vehicle vehicle;
 	
-	@OneToOne(targetEntity = Location.class)
-	private Location area;
+	@ManyToOne(targetEntity = Location.class)
+	private Location location;
 
 	@Column (name= "total_fare")
 	private float fare;
 	
-	@OneToOne (targetEntity= User.class)
-	private User id;
+	@ManyToOne (targetEntity= Customer.class)
+	private Customer customer;
 	
 
-	public Booking(long booking_id, LocalDateTime pickupTime, LocalDateTime returnTime, boolean availablity, Vehicle vehicleName,
-			Location area, float fare, User id) {
+	public Booking(LocalDateTime pickupTime, LocalDateTime returnTime, Vehicle vehicle, Customer customer) {
 	
-		this.Booking_id = booking_id;
+	//	this.Booking_id = booking_id;
 		this.PickupTime = pickupTime;
 		this.ReturnTime = returnTime;
-		this.Availablity = availablity;
-		this.vehicleName = vehicleName;
-		this.area = area;
-		this.fare= fare;
-		this.id = id;
+		//this.Availablity = availablity;
+		this.vehicle = vehicle;
+		//this.location = location;
+		//this.fare= fare;
+		this.customer = customer;
 		
 	}
 
-	public Booking() {
-	}
 
 	public long getBooking_id() {
 		return Booking_id;
 	}
 
+
 	public void setBooking_id(long booking_id) {
 		Booking_id = booking_id;
 	}
+
 
 	public LocalDateTime getPickupTime() {
 		return PickupTime;
 	}
 
+
 	public void setPickupTime(LocalDateTime pickupTime) {
 		PickupTime = pickupTime;
 	}
+
 
 	public LocalDateTime getReturnTime() {
 		return ReturnTime;
 	}
 
+
 	public void setReturnTime(LocalDateTime returnTime) {
 		ReturnTime = returnTime;
 	}
+
 
 	public boolean isAvailablity() {
 		return Availablity;
 	}
 
+
 	public void setAvailablity(boolean availablity) {
 		Availablity = availablity;
 	}
 
-	public Vehicle getVehicleName() {
-		return vehicleName;
+
+	public Vehicle getVehicle() {
+		return vehicle;
 	}
 
-	public void setVehicleName(Vehicle vehicleName) {
-		this.vehicleName = vehicleName;
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 
-	public Location getArea() {
-		return area;
+
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setArea(Location area) {
-		this.area = area;
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
+
 
 	public float getFare() {
 		return fare;
 	}
 
+
 	public void setFare(float fare) {
 		this.fare = fare;
 	}
 
-	public User getId() {
-		return id;
+
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setId(User id) {
-		this.id = id;
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
+
+
+	
+	
 	
 	
 

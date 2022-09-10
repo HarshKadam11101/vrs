@@ -30,11 +30,15 @@ public class VehicleServiceImpl implements VehicleService{
 		return vehicleList;
 	}
 
-//	@Override
-//	public Brand getVehicle(long id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public List<Integer> numberOfVehicle() {
+		List<Integer> count = new ArrayList();
+		String[] type= new String[] {"Swift","Scorpio","Polo","kriger","Xuv700"};
+		for(String Vehicle:type) {
+			count.add(viewVehicle(Vehicle).size());
+		}
+		return count;
+	}
 
 	@Override
 	public Vehicle saveVehicle(Vehicle vehicle) {
@@ -44,8 +48,8 @@ public class VehicleServiceImpl implements VehicleService{
 		vehicleEntity.setVehicleId(vehicle.getVehicleId());
 		vehicleEntity.setVehicleName(vehicle.getVehicleName());
 		vehicleEntity.setVehicleNumber(vehicle.getVehicleNumber());
-		vehicleEntity.setBrandName(vehicle.getBrandName());
-		vehicleEntity.setArea(vehicle.getArea());
+		vehicleEntity.setBrand(vehicle.getBrand());
+		vehicleEntity.setLocation(vehicle.getLocation());
 		vehicleEntity.setRent(vehicle.getRent());
 		
 		vehicleRepository.save(vehicleEntity);
@@ -75,12 +79,6 @@ public class VehicleServiceImpl implements VehicleService{
 		}
 		vehicleList = vehicleList.stream().filter(vehicle -> vehicle.getVehicleName().equals(vehicleName)).collect(Collectors.toList());
 		return vehicleList;
-	}
-
-	@Override
-	public Vehicle getVehicle(int vehilcleId) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	

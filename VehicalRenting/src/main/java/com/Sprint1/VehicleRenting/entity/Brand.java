@@ -27,6 +27,18 @@ public class Brand implements Serializable{
 	@Column(name="launch_year")
 	private int launchYear;
 
+	public Brand() {}
+	
+	
+
+	public Brand( String brandName,int launchYear) {
+		super();
+		//this.brandId = brandId;
+		this.brandName = brandName;
+		this.launchYear = launchYear;
+		
+	}
+	
 	public int getBrandId() {
 		return brandId;
 	}
@@ -50,6 +62,7 @@ public class Brand implements Serializable{
 	public void setLaunchYear(int launchYear) {
 		this.launchYear = launchYear;
 	}
+	
 	
 	
 
