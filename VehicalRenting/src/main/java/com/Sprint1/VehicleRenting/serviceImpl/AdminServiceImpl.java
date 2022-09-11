@@ -58,6 +58,28 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
+	public Admin viewAdmin(int adminId){
+		List<Admin> adminList = repository.findAll();
+		for(Admin admin:adminList) {
+			if(admin.getId()==adminId) {
+				return admin;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public Admin viewAdmin(String username){
+		List<Admin> adminList = repository.findAll();
+		for(Admin admin:adminList) {
+			if(admin.getUsername().equals(username) || admin.getEmail().equals(username)) {
+				return admin;
+			}
+		}
+		return null;
+	}
+
+	@Override
 	public boolean validateAdmin(String username, String password,String role) {
 		if(role.equals("A")) {
 			List<Admin> adminList = repository.findAll();

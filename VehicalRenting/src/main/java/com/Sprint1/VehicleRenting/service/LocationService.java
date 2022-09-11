@@ -14,6 +14,8 @@ public interface LocationService  {
 
 	List<Location> viewLocation(String area);
 
-	List<Integer> numberOfLocation();
+	List<Integer> numberOfArea();
+
+	List<Location> getAllCity();
 
 }

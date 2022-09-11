@@ -40,7 +40,7 @@ public class LocationServiceImpl implements LocationService {
 		return locationList;
 	}
 	@Override
-	public List<Integer> numberOfLocation() {
+	public List<Integer> numberOfArea() {
 		List<Integer> count = new ArrayList();
 		String[] area = new String[] {"Mallad", "Andheri", "Juhu", "Airoli"};
 		
@@ -48,6 +48,10 @@ public class LocationServiceImpl implements LocationService {
 			count.add(viewLocation(Location).size());
 		}
 		return count;
+	}
+	@Override
+	public List<Location> getAllCity(){
+		return locationRepository.findAll();
 	}
 
 }

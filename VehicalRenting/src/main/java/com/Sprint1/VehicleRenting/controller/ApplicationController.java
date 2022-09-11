@@ -1,5 +1,7 @@
 package com.Sprint1.VehicleRenting.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Sprint1.VehicleRenting.entity.Admin;
 import com.Sprint1.VehicleRenting.entity.Customer;
+import com.Sprint1.VehicleRenting.entity.Location;
 import com.Sprint1.VehicleRenting.serviceImpl.AdminServiceImpl;
 import com.Sprint1.VehicleRenting.serviceImpl.BrandServiceImpl;
 import com.Sprint1.VehicleRenting.serviceImpl.CustomerServiceImpl;
@@ -35,8 +39,8 @@ public class ApplicationController {
 	
 	
 	private int userId = 0;
+	private String userRole ="";
 	
-	// Self-Explanatory mapping methods
 	
 	@GetMapping("/")
 	public ModelAndView homePage() {
@@ -96,4 +100,85 @@ public class ApplicationController {
 		return mav;
 		
 	}
+	
+	@PostMapping("/customerLog")
+	public ModelAndView customerLog(HttpServletRequest request) {
+		if(!userRole.equals("customer")) {
+			return null;
+		}
+		ModelAndView mav = new ModelAndView("customerLog");
+		String PickupTime = (String)request.getParameter("PickupTime");
+		String ReturnTime = (String)request.getParameter("ReturnTime");
+		String vehicleName = (String)request.getParameter("vehicleName");
+		
+		
+		mav.addObject("PickupTime",PickupTime);
+		mav.addObject("ReturnTime",ReturnTime);
+		mav.addObject("username",customerServiceImpl.viewCustomer(userId).getUsername());
+		return mav;
+	}
+	
+	@PostMapping("/adminHome")
+	public ModelAndView adminHome() {
+		if(!userRole.equals("admin")) {
+			return null;
+		}
+		ModelAndView mav = new ModelAndView("adminHome");
+		mav.addObject("username",adminServiceImpl.viewAdmin(userId).getUsername());
+		return mav;
+	}
+	
+	@PostMapping("/sign")
+	public ModelAndView signIn(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("login");
+		mav.addObject("message","Incorrect username or password");
+		String password;
+		try {
+			password = request.getParameter("password");			
+		}catch(Exception e) {
+			return null;
+		}
+		String username = request.getParameter("username");
+		String role = request.getParameter("type");
+		if(adminServiceImpl.validateAdmin(username, password, role)) {
+			userId = adminServiceImpl.viewAdmin(username).getId();
+			userRole = "admin";
+			return adminHome();
+		}
+		else if(customerServiceImpl.validateCustomer(username, password, role)) {
+			userId = customerServiceImpl.viewCustomer(username).getId();
+			userRole = "customer";
+			return bookingPage();
+		}
+		
+		return mav;
+	}
+	
+	@GetMapping("/book")
+	public ModelAndView bookingPage() {
+		if(!userRole.equals("customer")) {
+			return null;
+		}
+		ModelAndView mav = new ModelAndView("book");
+		if(userServiceImpl.viewUser(userId) instanceof Admin) {
+			return adminHome();
+		}
+		
+		mav.addObject("username",customerServiceImpl.viewCustomer(userId).getUsername());
+		List<Location> locationList = locationServiceImpl.getAllCity();
+		mav.addObject("locationList", locationList);
+		return mav;
+	}
+	
+	@GetMapping("/vehicleManagement")
+	public ModelAndView vehicleManagement() {
+		if(!userRole.equals("admin")) {
+			return null;
+		}
+		ModelAndView mav =new ModelAndView("vehicleManagement");
+		mav.addObject("userName",adminServiceImpl.viewAdmin(userId).getUsername());
+		//mav.addObject("count",vehicleServiceImpl.numberOfVehicle());
+		return mav;
+	}
+	
 }

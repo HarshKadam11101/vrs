@@ -28,4 +28,8 @@ public interface AdminService {
 
 	List<Booking> getBookingsLocationwise(String area);
 
+	Admin viewAdmin(int adminId);
+
+	Admin viewAdmin(String username);
+
 }

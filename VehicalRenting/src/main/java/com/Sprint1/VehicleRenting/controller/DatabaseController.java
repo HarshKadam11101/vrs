@@ -40,6 +40,7 @@ public class DatabaseController {
 			
 	}
 	
+	
 	@GetMapping("/postAdmin")
 	
 	public void postAdmin() {
@@ -105,6 +106,7 @@ public class DatabaseController {
 		vehicleServiceImpl.saveVehicle(vehicle2);
 		
 	}
+	
 	
 	
 

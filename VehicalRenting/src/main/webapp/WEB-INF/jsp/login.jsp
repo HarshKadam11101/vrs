@@ -99,11 +99,11 @@
         <option value="C">Customer</option>
     </select><br>
     <label for="userName">Username: &nbsp;</label>
-    <input type="text" name="userName" id="" placeholder="Username"><br>
+    <input type="text" name="username" id="" placeholder="Username"><br>
     <label for="password">Password: &nbsp;</label>
     <input type="password" name="password" id="" placeholder="Password"><br>
     <input type="submit" id="login" value="Login"><br>
-    <a href="/registerCustomer" class="register">New here? Please Register</a>
+    <a href="/register" class="register">New here? Please Register</a>
 </form></div>
 <img src="/images/car1.jpg" width="700" height="400" id="car" >
 <footer></footer>
