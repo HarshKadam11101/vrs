@@ -74,8 +74,8 @@ public class ApplicationController {
 			return null;
 		}
 		ModelAndView mav = new ModelAndView("home");
-		String userName = (String)request.getParameter("username");
-		String PAN = (String)request.getParameter("PAN");
+		String username = (String)request.getParameter("username");
+		String PAN = (String)request.getParameter("pan");
 		String address = (String)request.getParameter("address");
 		String mobileNumber = (String)request.getParameter("mobileNumber");
 		String email = (String)request.getParameter("email");
@@ -91,7 +91,7 @@ public class ApplicationController {
 		if(!userServiceImpl.validateMobileNo(mobileNumber)) {
 			return registerPage("Invalid mobile number");
 		}
-		Customer customer = new Customer(userName,PAN,password1,address,mobileNumber,email);
+		Customer customer = new Customer(username,PAN,password1,address,mobileNumber,email);
 		customerServiceImpl.insertCustomer(customer);
 		return mav;
 		
