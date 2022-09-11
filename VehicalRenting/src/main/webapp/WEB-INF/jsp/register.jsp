@@ -87,8 +87,8 @@ header {
 	<div id="loginBlock">
         <span class="message">${message}</span><br>
 		<form action="/saveCustomer" method="post">
-			<label for="userName">Enter Your Full Name: &nbsp;</label> <input
-				type="text" name="userName" id="" placeholder="Username"><br>
+			<label for="username">Enter Your Full Name: &nbsp;</label> <input
+				type="text" name="username" id="" placeholder="Username"><br>
 			<label for="address">Enter your Address: &nbsp;</label> <input
 				type="text" name="address" id="" placeholder="Address"><br>
                 <label for="pan">Enter your PAN No: &nbsp;</label> <input
