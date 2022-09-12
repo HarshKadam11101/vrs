@@ -85,7 +85,7 @@ public class DatabaseController {
 	
 	@GetMapping("/postVehicle")
 	
-	public void postVehicle() {
+	public Vehicle postVehicle() {
 		Brand brand1 = new Brand("Renault",2016);
 		Brand brand2 = new Brand("Toyota",2020);
 		
@@ -102,8 +102,9 @@ public class DatabaseController {
 		Vehicle vehicle1 = new Vehicle("Duster",brand1,location1,"MH09BJ2552",500);
 		Vehicle vehicle2 = new Vehicle("Innova",brand2,location2,"WB09BJ2442",400);
 		
-		vehicleServiceImpl.saveVehicle(vehicle1);
-		vehicleServiceImpl.saveVehicle(vehicle2);
+		//vehicleServiceImpl.saveVehicle(vehicle1);
+		return vehicleServiceImpl.saveVehicle(vehicle1);
+		//return vehicleServiceImpl.saveVehicle(vehicle2);
 		
 	}
 	

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -252,6 +254,21 @@ public class ApplicationController {
 	@PutMapping("/updateVehicle")
 	public void updateVehicle(@RequestBody Vehicle vehicle) {
 		vehicleServiceImpl.updateVehicle(vehicle);
+	}
+	
+	@DeleteMapping("/deleteCustomer/{id}")
+	public void deleteCustomerbyId(@PathVariable("id") int customerId) {
+		customerServiceImpl.deleteCustomer(customerId);
+	}
+	
+	@DeleteMapping("/deleteAdmin/{id}")
+	public void deleteAdminbyId(@PathVariable("id") int adminId) {
+		adminServiceImpl.deleteAdmin(adminId);
+	}
+	
+	@DeleteMapping("/deleteLocation/{id}")
+	public void deleteLocationbyId(@PathVariable("id") int locationId) {
+		locationServiceImpl.deleteLocation(locationId);
 	}
 	
 	

@@ -8,8 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register</title>
-<link rel="stylesheet" href="http://localhost:8085/images/cab.css">
-<link rel="stylesheet" href="cab.css">
+<link rel="stylesheet" href="http://localhost:8089/images/cab.css">
+<link rel="stylesheet" href="car1.css">
 <style>
  h1 {color:rgb(18, 102, 18); font-size: 400%; text-align: start;}
     #loginBlock{
