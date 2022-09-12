@@ -5,15 +5,21 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Sprint1.VehicleRenting.entity.Admin;
+import com.Sprint1.VehicleRenting.entity.Brand;
 import com.Sprint1.VehicleRenting.entity.Customer;
 import com.Sprint1.VehicleRenting.entity.Location;
+import com.Sprint1.VehicleRenting.entity.Vehicle;
 import com.Sprint1.VehicleRenting.serviceImpl.AdminServiceImpl;
 import com.Sprint1.VehicleRenting.serviceImpl.BrandServiceImpl;
 import com.Sprint1.VehicleRenting.serviceImpl.CustomerServiceImpl;
@@ -180,5 +186,73 @@ public class ApplicationController {
 		//mav.addObject("count",vehicleServiceImpl.numberOfVehicle());
 		return mav;
 	}
+	
+	@PostMapping("/addAdmin")
+	public void insertAdmin (@RequestBody Admin admin) {
+		adminServiceImpl.insertAdmin(admin);
+//		if(saved.equals("Admin saved successfully")) {
+//			return new ResponseEntity<String>(HttpStatus.CREATED);
+//		}
+//		return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@PostMapping("/addCustomer")
+	public void insertCustomer (@RequestBody Customer customer) {
+		 customerServiceImpl.insertCustomer(customer);
+//		if(saved.equals("Admin saved successfully")) {
+//			return new ResponseEntity<String>(HttpStatus.CREATED);
+//		}
+//		return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@PostMapping("/addLocation")
+	public void insertLocation (@RequestBody Location location) {
+		 locationServiceImpl.insertLocation(location);
+	}
+	
+	@PostMapping("/addBrand")
+	public void insertBrand (@RequestBody Brand brand) {
+		 brandServiceImpl.insertBrand(brand);
+	}
+	
+	@PostMapping("/addVehicle")
+	public ResponseEntity<String> insertVehicle (@RequestBody Vehicle vehicle) {
+		Vehicle saved = vehicleServiceImpl.saveVehicle(vehicle);
+		if(saved.equals("Vehicle saved successfully")) {
+			return new ResponseEntity<String>(HttpStatus.CREATED);
+		}
+		return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping("/vehicleList")
+	public Vehicle getAllVehicle() {
+		return (Vehicle) vehicleServiceImpl.getAllVehicle();
+	}
+	
+	@PutMapping("/updateAdmin")
+	public void updateAdmin(@RequestBody Admin admin) {
+		adminServiceImpl.updateAdmin(admin);
+	}
+	
+	@PutMapping("/updateCustomer")
+	public void updateCustomer(@RequestBody Customer customer) {
+		customerServiceImpl.updateCustomer(customer);
+	}
+	
+	@PutMapping("/updateLocation")
+	public void updateLocation(@RequestBody Location location) {
+		locationServiceImpl.updateLocation(location);
+	}
+	
+	@PutMapping("/updateBrand")
+	public void updateBrand(@RequestBody Brand brand) {
+		brandServiceImpl.updateBrand(brand);
+	}
+	
+	@PutMapping("/updateVehicle")
+	public void updateVehicle(@RequestBody Vehicle vehicle) {
+		vehicleServiceImpl.updateVehicle(vehicle);
+	}
+	
 	
 }

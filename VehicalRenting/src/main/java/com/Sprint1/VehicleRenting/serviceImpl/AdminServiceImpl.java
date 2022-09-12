@@ -41,7 +41,22 @@ public class AdminServiceImpl implements AdminService {
 	LocationRepository locationRepository;
 	@Override
 	public void insertAdmin(Admin admin) {
+//		
+//		Admin admin1=new Admin();
+//		admin1.setId(admin.getId());
+//		admin1.setUsername(admin.getUsername());
+//		admin1.setPAN(admin.getPAN());
+		//admin
+//		vehicleEntity.setVehicleNumber(vehicle.getVehicleNumber());
+//		vehicleEntity.setBrand(vehicle.getBrand());
+//		vehicleEntity.setLocation(vehicle.getLocation());
+//		vehicleEntity.setRent(vehicle.getRent());
+		
+//		vehicleRepository.save(vehicleEntity);
+//		return vehicle;
 		repository.save(admin);
+		//return admin;
+		
 	}
 	@Override
 	public void updateAdmin(Admin admin) {
